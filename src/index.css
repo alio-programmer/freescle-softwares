@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .scrollbar {
+        background: transparent; /* Make the scrollable area transparent */
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: rgba(255, 255, 255, 0.1); /* Transparent gray track */
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(128, 128, 128, 0.6); /* Semi-transparent gray for thumb */
+        border-radius: 100vh;
+        border: 2px solid rgba(255, 255, 255, 0.2); /* Faint border */
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(128, 128, 128, 0.8); /* Slightly darker on hover */
+    }
+}
