@@ -1,12 +1,14 @@
-import React, { useState } from 'react';  // Import React to be safe
+import React, { useState } from 'react';  // Import React
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { Field, Label, Switch } from '@headlessui/react';
+import { Switch } from '@headlessui/react';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      {/* Background Decoration */}
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -19,12 +21,18 @@ const Contact = () => {
           className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
         />
       </div>
+
+      {/* Contact Form Header */}
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Contact Us</h2>
         <p className="mt-2 text-lg text-gray-600">We hear you</p>
       </div>
+
+      {/* Contact Form */}
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          
+          {/* First Name */}
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold text-gray-900">
               First name
@@ -39,6 +47,8 @@ const Contact = () => {
               />
             </div>
           </div>
+
+          {/* Last Name */}
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold text-gray-900">
               Last name
@@ -53,6 +63,8 @@ const Contact = () => {
               />
             </div>
           </div>
+
+          {/* Company */}
           <div className="sm:col-span-2">
             <label htmlFor="company" className="block text-sm font-semibold text-gray-900">
               Company
@@ -67,6 +79,8 @@ const Contact = () => {
               />
             </div>
           </div>
+
+          {/* Email */}
           <div className="sm:col-span-2">
             <label htmlFor="email" className="block text-sm font-semibold text-gray-900">
               Email
@@ -81,32 +95,30 @@ const Contact = () => {
               />
             </div>
           </div>
+
+          {/* Phone Number with Country Code */}
           <div className="sm:col-span-2">
             <label htmlFor="phone-number" className="block text-sm font-semibold text-gray-900">
               Phone number
             </label>
             <div className="relative mt-2.5">
-              <div className="absolute inset-y-0 left-0 flex items-center">
-                <label htmlFor="country" className="sr-only">
-                  Country
-                </label>
-                <select
-                  id="country"
-                  name="country"
-                  className="h-full rounded-md border-0 bg-transparent py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                >
-                  <option>US</option>
-                  <option>CA</option>
-                  <option>EU</option>
-                  <option>IND</option>
-                  <option>AUS</option>
-                  <option>NZ</option>
-                </select>
-                <ChevronDownIcon
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
-                />
-              </div>
+              <select
+                id="country"
+                name="country"
+                className="absolute left-0 h-full rounded-md border-0 bg-transparent py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                aria-label="Country Code"
+              >
+                <option>US</option>
+                <option>CA</option>
+                <option>EU</option>
+                <option>IND</option>
+                <option>AUS</option>
+                <option>NZ</option>
+              </select>
+              <ChevronDownIcon
+                aria-hidden="true"
+                className="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
+              />
               <input
                 id="phone-number"
                 name="phone-number"
@@ -116,6 +128,8 @@ const Contact = () => {
               />
             </div>
           </div>
+
+          {/* Message */}
           <div className="sm:col-span-2">
             <label htmlFor="message" className="block text-sm font-semibold text-gray-900">
               Message
@@ -130,32 +144,37 @@ const Contact = () => {
               />
             </div>
           </div>
-          <Field className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <Switch
-                checked={agreed}
-                onChange={setAgreed}
-                className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 data-[checked]:bg-indigo-600"
-              >
-                <span className="sr-only">Agree to policies</span>
-                <span
-                  aria-hidden="true"
-                  className="transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
-                />
-              </Switch>
-            </div>
-            <Label className="text-sm text-gray-600">
+
+          {/* Agreement to Policies */}
+          <div className="flex items-center gap-x-4 sm:col-span-2">
+            <Switch
+              checked={agreed}
+              onChange={setAgreed}
+              className={`${
+                agreed ? 'bg-indigo-600' : 'bg-gray-200'
+              } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-600`}
+            >
+              <span className="sr-only">Agree to policies</span>
+              <span
+                className={`${
+                  agreed ? 'translate-x-6' : 'translate-x-1'
+                } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+              />
+            </Switch>
+            <label className="text-sm text-gray-600">
               By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold text-indigo-600">
+              <Link to ="/privacy" className="font-semibold text-indigo-600 underline">
                 privacy policy
-              </a>.
-            </Label>
-          </Field>
+              </Link>.
+            </label>
+          </div>
         </div>
+
+        {/* Submit Button */}
         <div className="mt-10">
           <button
             type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600"
           >
             Let's talk
           </button>
