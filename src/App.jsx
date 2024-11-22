@@ -4,7 +4,8 @@ import Home from "./Pages/Home.jsx";
 import Footer from "./Helper Pages/Footer.jsx";
 import About from "./Pages/About/About.jsx";
 import Services from "./Pages/Services/Services.jsx";
-import Contact from "./Pages/Contact/Contact.jsx"
+import Contact from "./Pages/Contact/Contact.jsx";
+import Privacy from "./Pages/Contact/privacy.jsx";
 function App() {
   return (
       <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
                       <Route path="/about" element={<About/>} />
                       <Route path="/services" element={<Services/>} />
                       <Route path="/contact" element={<Contact/>} />
+                      <Route path="/privacy" element={<Privacy/>} />
                   </Routes>
 
               </div>
