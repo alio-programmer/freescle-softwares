@@ -19,12 +19,20 @@ export default {
       },
       animation: {
         "matrix-fall": "fall 5s linear infinite",
+        'glow-border': 'glow 4s ease-in-out infinite',
       },
       keyframes: {
         fall: {
           "0%": { transform: "translateY(-100%)", opacity: 0 },
           "50%": { opacity: 1 },
           "100%": { transform: "translateY(100%)", opacity: 0 },
+        },
+        glow: {
+          '0%': { borderColor: 'rgba(139, 92, 246, 0.4)' },
+          '25%': { borderColor: 'rgba(220, 180, 246, 0.6)' },
+          '50%': { borderColor: 'rgba(72, 61, 139, 0.7)' },
+          '75%': { borderColor: 'rgba(220, 180, 246, 0.6)' },
+          '100%': { borderColor: 'rgba(139, 92, 246, 0.4)' },
         },
       },
     },
